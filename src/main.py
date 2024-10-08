@@ -1,0 +1,3 @@
+from src.modules.login_search import search_common_login_path_for_url
+
+search_common_login_path_for_url()

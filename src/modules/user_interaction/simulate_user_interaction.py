@@ -18,14 +18,6 @@ def find_login_page(url):
         options.add_argument('--disable-cookies') # disable cookies
         options.add_argument('--disable-popup-blocking')
         options.add_argument('--disable-notifications')
-        options.add_argument('--disable-browser-side-navigation')
-        options.add_argument('--disable-infobars')
-        options.add_argument('--disable-extensions')
-        prefs = {
-            'profile.default_content_setting_values.cookies': 2, # block all cookies
-            'profile.block_third_party_cookies': True
-        }
-        options.experimental_options["prefs"] = prefs
         driver = webdriver.Chrome(options = options)
 
         driver.get(url)
@@ -69,6 +61,7 @@ def iterate_interact_elements(driver, elements):
             if visit_page_behind_element(driver, keyword, element):
                 elements.clear()
                 break
+
 
 def check_interaction(driver, keyword, button):
     if keyword.lower() not in button.text.strip().lower():

@@ -20,6 +20,9 @@ def find_login_page(url):
         options.add_argument('--disable-notifications')
         driver = webdriver.Chrome(options = options)
 
+        # TODO handle cookie popup
+        # TODO handle captchas
+
         driver.get(url)
         time.sleep(randint(3, 6))
 
@@ -63,10 +66,10 @@ def iterate_interact_elements(driver, elements):
                 break
 
 
-def check_interaction(driver, keyword, button):
-    if keyword.lower() not in button.text.strip().lower():
+def check_interaction(driver, keyword, element):
+    if keyword.lower() not in element.text.strip().lower():
         return False
-    button.click()
+    element.click()
     time.sleep(randint(3, 6))
     current_url = driver.current_url
     if current_url not in new_links:

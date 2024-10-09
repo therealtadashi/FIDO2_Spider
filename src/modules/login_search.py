@@ -8,12 +8,14 @@ import certifi
 import tldextract
 import requests
 from bs4 import BeautifulSoup
+
+from src.modules.fido_support.fido2_support import get_scripts, scan_scripts, scan_well_known
 from src.modules.user_interaction.simulate_user_interaction import find_login_page
 from src.utils.csv_url_reader import read_url
 from src.utils.sso_archive_parser import get_login_page_by_domain, get_list
 
 path_patterns = ['/account', '/accounts', '/login', '/signin', '/user', '/auth'] # common patterns for login paths
-base_url = read_url()[4] # first elem in the tranco list
+base_url = read_url()[1] # first elem in the tranco list
 robots = '/robots.txt' # robots.txt path
 https = 'https://'
 
@@ -46,7 +48,14 @@ def search_common_login_path_for_url():
         iterate_url_search_new_url()
     else:
         print(f'[login_search] login page found with url: {login_url}')
-        find_login_page(login_url)
+        new_link = find_login_page(login_url)
+        if len(new_link) > 0:
+            login_url = new_link[0]
+        html = requests.get(login_url).text
+        soup = BeautifulSoup(html, 'html.parser')
+        files = get_scripts(soup)
+        scan_scripts(login_url, files)
+        # scan_well_known(login_url)
 
     print(visited)
 

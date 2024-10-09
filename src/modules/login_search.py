@@ -9,7 +9,7 @@ import tldextract
 import requests
 from bs4 import BeautifulSoup
 
-from src.modules.fido_support.fido2_support import get_scripts, scan_scripts, scan_well_known
+from src.modules.fido_support.fido2_support import get_scripts, scan_scripts
 from src.modules.user_interaction.simulate_user_interaction import find_login_page
 from src.utils.csv_url_reader import read_url
 from src.utils.sso_archive_parser import get_login_page_by_domain, get_list
@@ -26,6 +26,7 @@ all_domain_names = [entry['domain'] for entry in datas]
 
 to_visit = []
 visited = []
+potential_login = []
 
 
 def send_request_to_tranco_url():
@@ -48,16 +49,19 @@ def search_common_login_path_for_url():
         iterate_url_search_new_url()
     else:
         print(f'[login_search] login page found with url: {login_url}')
-        new_link = find_login_page(login_url)
-        if len(new_link) > 0:
-            login_url = new_link[0]
-        html = requests.get(login_url).text
-        soup = BeautifulSoup(html, 'html.parser')
-        files = get_scripts(soup)
-        scan_scripts(login_url, files)
-        # scan_well_known(login_url)
+        new_links = find_login_page(login_url)
+        file_dict = {}
+        for new_link in new_links:
+            html = requests.get(new_link).text
+            soup = BeautifulSoup(html, 'html.parser')
+            files = get_scripts(soup)
+            file_dict = scan_scripts(new_link, files)
+        for file, support in file_dict:
+            if support:
+                potential_login.append(file)
 
     print(visited)
+    print(potential_login)
 
 
 def send_requests_extract_new_urls(url):

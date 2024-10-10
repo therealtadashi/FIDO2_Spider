@@ -31,6 +31,8 @@ def search_common_login_path_for_url(domain):
     print(f'[login_search] search for login path patterns for url: {domain}')
 
     base_url = check_connection_with_domain(domain)
+    if base_url is None:
+        return [], []
     set_up_login_search(base_url)
     login_urls = get_login_page_by_domain(domain, all_domain_names, datas)
     # TODO implement a working proxy rotation
@@ -172,7 +174,5 @@ def check_connection_with_domain(domain):
         requests.get(url)
     except Exception as e:
         print(f'[login_search] domain {domain} cannot be reached {e}')
-        temp = get_url_for_domain(domain, all_domain_names, datas)
-        if temp is not None:
-            url = temp
+        url = get_url_for_domain(domain, all_domain_names, datas)
     return url

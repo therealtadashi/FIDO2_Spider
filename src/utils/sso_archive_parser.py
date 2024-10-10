@@ -23,9 +23,10 @@ def get_login_page_by_domain(domain_name, all_domain, data):
         return None
     else:
         login = domain_info.get(candidates, [])
-        if len(login) > 0:
-            return login[0].get(candidate)
-    return None
+        login_urls = []
+        for login_url in login:
+            login_urls.append(login_url.get(candidate))
+        return list(set(login_urls))
 
 
 def get_list(date, start, end):

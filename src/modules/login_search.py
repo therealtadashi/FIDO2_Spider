@@ -15,7 +15,7 @@ from src.utils.csv_url_reader import read_url
 from src.utils.sso_archive_parser import get_login_page_by_domain, get_list
 
 path_patterns = ['/account', '/accounts', '/login', '/signin', '/user', '/auth'] # common patterns for login paths
-base_url = read_url()[1] # first elem in the tranco list
+base_url = read_url()[0] # first elem in the tranco list
 robots = '/robots.txt' # robots.txt path
 https = 'https://'
 
@@ -27,41 +27,27 @@ all_domain_names = [entry['domain'] for entry in datas]
 to_visit = []
 visited = []
 potential_login = []
-
-
-def send_request_to_tranco_url():
-    print(f'[login_search] sending request to: {base_url}')
-    html = requests.get(https + base_url).text
-    soup = BeautifulSoup(html, 'html.parser')
-    print(soup)
+potential_support_files = []
 
 # check existence of common login path patterns
 def search_common_login_path_for_url():
     print(f'[login_search] search for login path patterns for url: {base_url}')
 
-    set_up_robotsparser()
-    common_path_urls() # appends new_urls to to_visit
-    login_url = get_login_page_by_domain(base_url, all_domain_names, datas)
+    login_urls = set_up_login_search()
     # TODO implement a working proxy rotation
 
-    if login_url is None:
+    if len(login_urls) == 0:
         print(f'[login_search] login page not found for url: {base_url}')
         iterate_url_search_new_url()
     else:
-        print(f'[login_search] login page found with url: {login_url}')
-        new_links = find_login_page(login_url)
-        file_dict = {}
-        for new_link in new_links:
-            html = requests.get(new_link).text
-            soup = BeautifulSoup(html, 'html.parser')
-            files = get_scripts(soup)
-            file_dict = scan_scripts(new_link, files)
-        for file, support in file_dict.items():
-            if support:
-                potential_login.append(file)
+        for login_url in login_urls:
+            print(f'[login_search] login page found with url: {login_url}')
+            if can_fetch_url(login_url):
+                new_links = find_login_page(login_url)
+                file_dict = scan_new_links_for_scripts(new_links)
+                update_potential_login_list(login_url, file_dict)
 
-    print(visited)
-    print(potential_login)
+    return list(set(potential_login)), list(set(potential_support_files))
 
 
 def send_requests_extract_new_urls(url):
@@ -110,7 +96,7 @@ def get_allowed_url_patterns():
     return allowed_url_patterns
 
 
-def common_path_urls():
+def create_common_path_urls():
     allowed = get_allowed_url_patterns()
     for pattern in allowed:
         full_url = https + base_url + pattern
@@ -161,3 +147,24 @@ def iterate_url_search_new_url():
         # TODO handle supports_fido
         to_visit.remove(url)
         visited.append(url)
+
+def set_up_login_search():
+    set_up_robotsparser()
+    create_common_path_urls() # appends new_urls to to_visit
+    login_urls = get_login_page_by_domain(base_url, all_domain_names, datas)
+    return login_urls
+
+def scan_new_links_for_scripts(new_links):
+    file_dict = {}
+    for new_link in new_links:
+        html = requests.get(new_link).text
+        soup = BeautifulSoup(html, 'html.parser')
+        files = get_scripts(soup)
+        file_dict = scan_scripts(new_link, files)
+    return file_dict
+
+def update_potential_login_list(login_url, file_dict):
+    for file, support in file_dict.items():
+        if support and file:
+            potential_support_files.append(file)
+            potential_login.append(login_url)

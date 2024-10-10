@@ -8,46 +8,48 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 login_keywords = ['log in', 'sign in', 'sign on', 'signin', 'login']
-new_links = []
 
 def find_login_page(url):
     print(f'[simulate_user_interaction] simulate button-interaction for url: {url}')
+    new_links = []
+    options = Options()
+    options.add_argument('--disable-cookies')  # disable cookies
+    options.add_argument('--disable-popup-blocking')
+    options.add_argument('--disable-notifications')
+    driver = webdriver.Chrome(options=options)
 
     try:
-        options = Options()
-        options.add_argument('--disable-cookies') # disable cookies
-        options.add_argument('--disable-popup-blocking')
-        options.add_argument('--disable-notifications')
-        driver = webdriver.Chrome(options = options)
+        driver.get(url)
+        time.sleep(randint(6, 10))  # simulate user delay
 
         # TODO handle cookie popup
         # TODO handle captchas
-
-        driver.get(url)
-        time.sleep(randint(3, 6))
 
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
         WebDriverWait(driver, 10, ignored_exceptions=ignored_exceptions).until(
             ec.presence_of_element_located((By.TAG_NAME, 'button')))
 
-        iterate_element(driver, 'button')
-        iterate_element(driver, 'a')
+        new_links += iterate_element(driver, 'button')
+        new_links += iterate_element(driver, 'a')
 
-        driver.quit()
-
-        return new_links
+        return list(set(new_links))
 
     except Exception as e:
         print(f'[simulate_user_interaction] Error finding sign-in page: {e}')
+    finally:
+        driver.quit()
+
+    return new_links
 
 # flag has type 'button' or 'a'
 def iterate_element(driver, flag):
     elements = driver.find_elements(By.TAG_NAME, flag)
+    found_links = []
     try:
-        iterate_interact_elements(driver, elements)
-
+        iterate_interact_elements(found_links, driver, elements)
     except Exception as e:
         print(f'[simulate_user_interaction] Error while iterating buttons: {e}')
+    return found_links
 
 
 def visit_page_behind_element(driver, keyword, element):
@@ -58,22 +60,20 @@ def visit_page_behind_element(driver, keyword, element):
         return False
 
 
-def iterate_interact_elements(driver, elements):
+def iterate_interact_elements(found_links, driver, elements):
     for element in elements:
         for keyword in login_keywords:
             if visit_page_behind_element(driver, keyword, element):
+                found_links.append(driver.current_url)
                 elements.clear()
                 break
 
 
 def check_interaction(driver, keyword, element):
-    if keyword.lower() not in element.text.strip().lower():
-        return False
-    element.click()
-    time.sleep(randint(3, 6))
-    current_url = driver.current_url
-    if current_url not in new_links:
+    if keyword.lower() in element.text.strip().lower():
+        element.click()
+        time.sleep(randint(3, 6))
+        current_url = driver.current_url
         print(f'[simulate_user_interaction] new link found: {current_url}')
-        new_links.append(current_url)
         return True
     return False

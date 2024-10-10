@@ -7,6 +7,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
+from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
+
 login_keywords = ['log in', 'sign in', 'sign on', 'signin', 'login']
 
 def find_login_page(url):
@@ -23,6 +25,7 @@ def find_login_page(url):
         time.sleep(randint(6, 10))  # simulate user delay
 
         # TODO handle cookie popup
+        handle_cookie_popup(driver)
         # TODO handle captchas
 
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)

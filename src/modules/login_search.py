@@ -26,6 +26,8 @@ visited = []
 potential_login = []
 potential_support_files = []
 
+#TODO create LoginPageScraperClass
+
 # check existence of common login path patterns
 def search_common_login_path_for_url(domain):
     print(f'[login_search] search for login path patterns for url: {domain}')
@@ -36,7 +38,7 @@ def search_common_login_path_for_url(domain):
     set_up_login_search(base_url)
     login_urls = get_login_page_by_domain(domain, all_domain_names, datas)
     # TODO implement a working proxy rotation
-
+    # TODO potential async requests
     if len(login_urls) == 0:
         print(f'[login_search] login page not found for url: {domain}')
         iterate_url_search_new_url(domain)
@@ -54,7 +56,7 @@ def search_common_login_path_for_url(domain):
 
 def send_requests_extract_new_urls(url, domain):
     try:
-        html = requests.get(url)
+        html = requests.get(url)    # TODO session.get(url)
         status_code = html.status_code
         if status_code == 200:
             print(f'[login_search] valid path for url: {url}')
@@ -140,15 +142,18 @@ def append_new_links(new_links):
             to_visit.append(new_link)
 
 
+# TODO to_visit to que
 def iterate_url_search_new_url(domain):
     for url in to_visit:
         send_requests_extract_new_urls(url, domain)
         to_visit.remove(url)
         visited.append(url)
 
+
 def set_up_login_search(base_url):
     set_up_robotsparser(base_url)
     create_common_path_urls(base_url) # appends new_urls to to_visit
+
 
 def scan_new_links_for_scripts(new_links):
     file_dict = {}

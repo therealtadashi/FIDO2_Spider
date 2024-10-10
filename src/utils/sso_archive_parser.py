@@ -1,4 +1,5 @@
 import json
+
 import requests
 
 candidates = 'login_page_candidates'
@@ -38,3 +39,12 @@ def get_list(date, start, end):
         return data
     except Exception as e:
         print(f'[sso_archive_parser] Error retrieving sso-archive: {e}')
+
+
+def get_url_for_domain(domain_name, all_domain, data):
+    domain_info = get_domain_info(domain_name, all_domain, data)
+    if domain_info is None:
+        return None
+    else:
+        resolved = domain_info.get('resolved', [])
+        return resolved.get('url')

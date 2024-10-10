@@ -1,5 +1,4 @@
 import requests
-from babel.dates import parse_time
 
 credentials = 'navigator.credentials'
 
@@ -18,7 +17,7 @@ def scan_scripts(url, js_files):
         text = js_response.text
 
         if f'{credentials}.create' in text or f'{credentials}.get' in text:
-            print(f"[fido2_support] navigator.credentials detected in {js_file}, possible FIDO2 implementation")
+            print(f"[fido2_support] {credentials} detected in {js_file}, possible FIDO2 implementation")
             file_dict[js_file] = True
         else:
             print(f'[fido2_support] no sign of FIDO2 found in {js_file}')

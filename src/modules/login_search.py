@@ -20,7 +20,7 @@ robots = '/robots.txt' # robots.txt path
 https = 'https://'
 
 rp = robotparser.RobotFileParser()
-yesterday =  (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+yesterday =  (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
 datas = get_list(yesterday, '1', '1000')
 all_domain_names = [entry['domain'] for entry in datas]
 
@@ -56,7 +56,7 @@ def search_common_login_path_for_url():
             soup = BeautifulSoup(html, 'html.parser')
             files = get_scripts(soup)
             file_dict = scan_scripts(new_link, files)
-        for file, support in file_dict:
+        for file, support in file_dict.items():
             if support:
                 potential_login.append(file)
 

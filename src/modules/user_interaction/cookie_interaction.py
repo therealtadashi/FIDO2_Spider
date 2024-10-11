@@ -1,5 +1,4 @@
 import time
-
 from selenium.common import StaleElementReferenceException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -28,7 +27,7 @@ def iterate_elements(driver, tag):
                     ec.element_to_be_clickable(element)
                 )
                 ActionChains(driver).move_to_element(element).click().perform()
-                return True
             except StaleElementReferenceException:
-                return False
+                elements.clear()
+                return
     elements.clear()

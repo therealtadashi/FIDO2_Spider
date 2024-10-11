@@ -6,9 +6,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from src.modules.user_interaction.cookie_interaction import handle_cookie_popup, handle_cookie_popup
+from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 
 login_keywords = ['log in', 'sign in', 'sign on', 'signin', 'login']
+
 
 def find_login_page(url):
     print(f'[simulate_user_interaction] simulate button-interaction for url: {url}')
@@ -78,6 +79,3 @@ def check_interaction(driver, keyword, element):
         print(f'[simulate_user_interaction] new link found: {current_url}')
         return True
     return False
-
-
-find_login_page('https://cloudflare.com')

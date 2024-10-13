@@ -1,6 +1,7 @@
 import copy
 import ssl
 import urllib
+from collections import deque
 from copy import deepcopy
 from datetime import datetime, timedelta
 from urllib import robotparser
@@ -164,10 +165,11 @@ class LoginPageScraper:
 
 
     def iterate_url_search_new_url(self, domain):
-        # TODO to_visit to que
-        for url in self.to_visit:
+        # TODO to_visit to queue
+        queue = deque(self.to_visit)
+        while queue:
+            url = queue.popleft()
             self.send_requests_extract_new_urls(url, domain)
-            self.to_visit.remove(url)
             self.visited.append(url)
 
 

@@ -7,9 +7,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
+from src.modules.user_interaction.translation_keyword import translation_keyword
 
 login_keywords = ['log in', 'sign in', 'sign on', 'signin', 'login']
-
 
 def find_login_page(url):
     print(f'[simulate_user_interaction] simulate button-interaction for url: {url}')
@@ -24,8 +24,10 @@ def find_login_page(url):
         driver.get(url)
         time.sleep(randint(5, 8))  # simulate user delay
 
-        handle_cookie_popup(driver) # check cookie popup
+        translated_keywords = []
 
+        translate_keywords(driver, translated_keywords) # translate login-keywords
+        handle_cookie_popup(driver) # check cookie popup
         # TODO handle captchas
 
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)
@@ -36,6 +38,9 @@ def find_login_page(url):
         new_links += iterate_element(driver, 'a')
 
         print('[simulate_user_interaction] button interaction finished')
+
+        if translated_keywords in login_keywords:
+            login_keywords.remove(translation_keyword)
 
         return list(set(new_links))
 
@@ -82,3 +87,12 @@ def check_interaction(driver, keyword, element):
         print(f'[simulate_user_interaction] new link found: {current_url}')
         return True
     return False
+
+
+def translate_keywords(driver, translated_keywords):
+    lang = driver.find_element(By.XPATH, '//html').get_attribute('lang')
+    if '-' in lang:
+        lang = lang.split('-')[0]  # filter regional language
+    if lang != 'en':
+        translated_keywords.extend(translation_keyword[lang])
+        login_keywords.extend(translated_keywords)

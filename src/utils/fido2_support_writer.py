@@ -1,24 +1,35 @@
 import json
+import os
 
 file_path = '../assets/fido2_support.json'
 
+def add_unique_urls(existing_urls, new_urls):
+    existing_set = set(existing_urls)
+    existing_set.update(new_urls)
+    return list(existing_set)
+
 def update_fido2_support_json(domain, login_urls, support_urls):
-    with open(file_path, 'r') as file1:
-        data = json.load(file1)
+    if not os.path.exists(file_path):
+        data = {}
+    else:
+        try:
+            with open(file_path, 'r') as file:
+                data = json.load(file)
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"[fido2_support_writer] Error reading {file_path}: {e}")
+            return
 
-        if domain not in data:
-            data[domain] = {
-                'login_urls': [],
-                'support_urls': []
-            }
+    if domain not in data:
+        data[domain] = {
+            'login_urls': [],
+            'support_urls': []
+        }
 
-        for login_url in login_urls:
-            if login_url not in data[domain]['login_urls']:
-                data[domain]['login_urls'].append(login_url)
+    data[domain]['login_urls'] = add_unique_urls(data[domain]['login_urls'], login_urls)
+    data[domain]['support_urls'] = add_unique_urls(data[domain]['support_urls'], support_urls)
 
-        for support_url in support_urls:
-            if support_url not in data[domain]['support_urls']:
-                data[domain]['support_urls'].append(support_url)
-
-    with open(file_path, 'w') as file2:
-        json.dump(data, file2, indent=4)
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=4)
+    except IOError as e:
+        print(f"[fido2_support_writer] Error writing to {file_path}: {e}")

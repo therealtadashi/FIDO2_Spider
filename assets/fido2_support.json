@@ -1,2 +1,29 @@
 {
+    "google.com": {
+        "login_urls": [],
+        "support_urls": []
+    },
+    "microsoft.com": {
+        "login_urls": [
+            "https://www.microsoft.com/account",
+            "https://account.microsoft.com/account",
+            "https://account.microsoft.com/account/Account"
+        ],
+        "support_urls": [
+            "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js",
+            "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_ELtAAt2Ya8ISGuc0PJcBKA2.js"
+        ]
+    },
+    "amazonaws.com": {
+        "login_urls": [
+            "https://aws.amazon.com/account",
+            "https://aws.amazon.com/"
+        ],
+        "support_urls": [
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=y3cU6DdlGAesHdZzsUf81RWMeAE2-hOjZI3IYcNPXII&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_45cbacc5418cde77/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=y3cU6DdlGAesHdZzsUf81RWMeAE2-hOjZI3IYcNPXII&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_45cbacc5418cde77/static/js/panorama-nav-init.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=O6fd5XqAFM78O9YGwIAR01aQNnX-KyET0-bQH0jXhgc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_a9435fea6b292c7f/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=O6fd5XqAFM78O9YGwIAR01aQNnX-KyET0-bQH0jXhgc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_a9435fea6b292c7f/static/js/panorama-nav-init.js"
+        ]
+    }
 }

@@ -35,6 +35,8 @@ def find_login_page(url):
         new_links += iterate_element(driver, 'button')
         new_links += iterate_element(driver, 'a')
 
+        print('[simulate_user_interaction] button interaction finished')
+
         return list(set(new_links))
 
     except Exception as e:

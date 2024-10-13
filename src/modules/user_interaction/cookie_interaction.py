@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-cookie_keywords = ['allow', 'agree', 'accept', 'decline', 'reject']
+cookie_keywords = ['allow', 'agree', 'accept', 'decline', 'reject', 'Allow', 'Agree', 'Decline', 'Reject', 'Accept']
 
 
 def handle_cookie_popup(driver):
@@ -40,6 +40,7 @@ def iterate_elements(driver, tag):
                 return True
     elements.clear()
     return False
+
 
 def check_elements(driver, tag):
     for keyword in cookie_keywords:

@@ -51,9 +51,10 @@ class LoginPageScraper:
         self.potential_login = []
         self.potential_support_files = []
         self.rp = robotparser.RobotFileParser()
-        yesterday = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
+        yesterday = (datetime.now() - timedelta(days = 7)).strftime('%Y-%m-%d')
         self.datas = get_list(yesterday, '1', '1000')
         self.all_domain_names = [entry['domain'] for entry in self.datas]
+        self.session = requests.Session()
 
 
     # check existence of common login path patterns
@@ -92,7 +93,7 @@ class LoginPageScraper:
 
     def send_requests_extract_new_urls(self, url, domain):
         try:
-            html = requests.get(url)    # TODO session.get(url)
+            html = self.session.get(url) # changed from requests.get
             status_code = html.status_code
             if status_code == 200:
                 print(f'[login_search] valid path for url: {url}')

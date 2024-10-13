@@ -9,6 +9,7 @@ for domain in domains:
     counter += 1
     login_urls, support_urls = loginScraper.search_common_login_path_for_url(domain)
     update_fido2_support_json(domain, login_urls, support_urls)
+    # TODO Evaluate FIDO2 Implementation
     if counter == 3:
         break
     print('\n')

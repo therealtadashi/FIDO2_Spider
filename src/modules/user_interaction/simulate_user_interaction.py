@@ -15,7 +15,7 @@ def find_login_page(url):
     print(f'[simulate_user_interaction] simulate button-interaction for url: {url}')
     new_links = []
     options = Options()
-    options.add_argument('--disable-cookies')  # disable cookies
+    options.add_argument('--disable-cookies')
     options.add_argument('--disable-popup-blocking')
     options.add_argument('--disable-notifications')
     driver = webdriver.Chrome(options=options)
@@ -25,6 +25,7 @@ def find_login_page(url):
         time.sleep(randint(5, 8))  # simulate user delay
 
         handle_cookie_popup(driver) # check cookie popup
+
         # TODO handle captchas
 
         ignored_exceptions = (NoSuchElementException, StaleElementReferenceException)

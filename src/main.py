@@ -8,6 +8,6 @@ for domain in domains:
     counter += 1
     login_urls, support_urls = search_common_login_path_for_url(domain)
     update_fido2_support_json(domain, login_urls, support_urls)
-    if counter == 10:
+    if counter == 3:
         break
     print('\n')

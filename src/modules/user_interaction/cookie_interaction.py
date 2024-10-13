@@ -1,5 +1,5 @@
 import time
-from selenium.common import StaleElementReferenceException
+from selenium.common import StaleElementReferenceException, NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -10,10 +10,15 @@ cookie_keywords = ['allow', 'agree', 'accept', 'decline', 'reject']
 
 def handle_cookie_popup(driver):
     print('[cookie_interaction] searching for cookie popup')
+    tags = ['button', 'span', 'a']
     time.sleep(2)
-    for tag in ['button', 'a', 'span']:
-        iterate_elements(driver, tag)
+    for tag in tags:
+        if not check_elements(driver, tag):
+            continue
+        if iterate_elements(driver, tag):
+            break
     time.sleep(2)
+    print('[cookie_interaction] cookie interaction finished')
 
 
 def iterate_elements(driver, tag):
@@ -27,7 +32,20 @@ def iterate_elements(driver, tag):
                     ec.element_to_be_clickable(element)
                 )
                 ActionChains(driver).move_to_element(element).click().perform()
+                time.sleep(1)
+                if not element.is_displayed():
+                    return True
             except StaleElementReferenceException:
                 elements.clear()
-                return
+                return True
     elements.clear()
+    return False
+
+def check_elements(driver, tag):
+    for keyword in cookie_keywords:
+        try:
+            driver.find_element(By.XPATH, f"//{tag}[contains(text(), '{keyword}')]")
+            return True
+        except NoSuchElementException:
+            continue
+    return False

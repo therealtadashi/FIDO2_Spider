@@ -1,6 +1,7 @@
 import copy
 import ssl
 import urllib
+from copy import deepcopy
 from datetime import datetime, timedelta
 from urllib import robotparser
 from urllib.parse import urljoin
@@ -37,21 +38,29 @@ def search_common_login_path_for_url(domain):
         return [], []
     set_up_login_search(base_url)
     login_urls = get_login_page_by_domain(domain, all_domain_names, datas)
+
     # TODO implement a working proxy rotation
     # TODO potential async requests
+
     if len(login_urls) == 0:
         print(f'[login_search] login page not found for url: {domain}')
         iterate_url_search_new_url(domain)
     else:
         for login_url in login_urls:
             print(f'[login_search] login page found with url: {login_url}')
-            # scan_new_links_for_scripts(login_urls) # scan login url for fido support
+            # scan_new_links_for_scripts(login_urls) # scan login url fron archive for fido support
             if can_fetch_url(login_url):
                 new_links = find_login_page(login_url)
                 file_dict = scan_new_links_for_scripts(new_links)
                 update_potential_login_list(login_url, file_dict)
 
-    return list(set(potential_login)), list(set(potential_support_files))
+    copy_login = list(set(deepcopy(potential_login)))
+    copy_support = list(set(deepcopy(potential_support_files)))
+
+    potential_login.clear()
+    potential_support_files.clear()
+
+    return copy_login, copy_support
 
 
 def send_requests_extract_new_urls(url, domain):
@@ -142,8 +151,8 @@ def append_new_links(new_links):
             to_visit.append(new_link)
 
 
-# TODO to_visit to que
 def iterate_url_search_new_url(domain):
+    # TODO to_visit to que
     for url in to_visit:
         send_requests_extract_new_urls(url, domain)
         to_visit.remove(url)

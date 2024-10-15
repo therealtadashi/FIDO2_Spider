@@ -1,15 +1,31 @@
+from datetime import datetime, timedelta
 from src.modules.login_search import LoginPageScraper
+from src.modules.webauthn_adoption.webauthn_adoption import yubikey_catalog_fido2_cross_reference
 from src.utils.csv_url_reader import read_url
 from src.utils.fido2_support_writer import update_fido2_support_json
+from src.utils.sso_archive_parser import get_fido_info_for_domain, get_list
+
+yesterday = (datetime.now() - timedelta(days = 7)).strftime('%Y-%m-%d')
+datas = get_list(yesterday, '1', '1000')
+all_domain_names = [entry['domain'] for entry in datas]
 
 domains = read_url()
 counter = 0
 loginScraper = LoginPageScraper()
+
 for domain in domains:
     counter += 1
-    login_urls, support_urls = loginScraper.search_common_login_path_for_url(domain)
-    update_fido2_support_json(domain, login_urls, support_urls)
-    # TODO Evaluate FIDO2 Implementation
-    if counter == 3:
+    title = domain.split('.')[0]
+    print(title)
+    # TODO Find WebAuthn Adoption for "domain" on Adoption Lists
+    sso_fido = get_fido_info_for_domain(domain, all_domain_names, datas) # sso-archive
+    yubikey_fido = yubikey_catalog_fido2_cross_reference(title) # yubikey
+
+    login_urls, support_urls = loginScraper.search_common_login_path_for_url(domain) # Find Login Pages
+    update_fido2_support_json(domain, login_urls, support_urls) # Update FIDO2 Support json file
+
+    if counter == 1:
         break
     print('\n')
+
+# TODO Evaluate FIDO2 Implementation

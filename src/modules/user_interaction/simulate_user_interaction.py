@@ -1,11 +1,10 @@
 import time
 from random import randint
-from selenium import webdriver
 from selenium.common import NoSuchElementException, StaleElementReferenceException
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from src.modules.set_up_driver import setup_driver
 from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 from src.modules.user_interaction.translation_keyword import translation_keyword
 
@@ -14,11 +13,7 @@ login_keywords = ['log in', 'sign in', 'sign on', 'signin', 'login']
 def find_login_page(url):
     print(f'[simulate_user_interaction] simulate button-interaction for url: {url}')
     new_links = []
-    options = Options()
-    options.add_argument('--disable-cookies')
-    options.add_argument('--disable-popup-blocking')
-    options.add_argument('--disable-notifications')
-    driver = webdriver.Chrome(options=options)
+    driver = setup_driver()
 
     try:
         driver.get(url)

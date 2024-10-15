@@ -80,6 +80,7 @@ class LoginPageScraper:
                 # scan_new_links_for_scripts(login_urls) # scan login url fron archive for fido support
                 if self.can_fetch_url(login_url):
                     new_links = find_login_page(login_url)
+                    # TODO move scanning to a specific implementation
                     file_dict = scan_new_links_for_scripts(new_links)
                     self.update_potential_login_list(login_url, file_dict)
 

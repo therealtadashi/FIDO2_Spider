@@ -1,11 +1,12 @@
 import time
-from selenium.common import NoSuchElementException
+from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from src.modules.set_up_driver import setup_driver
+from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 
 
 def hideez_fido2_cross_reference(title):
@@ -19,6 +20,8 @@ def hideez_fido2_cross_reference(title):
     driver.get(catalog_url)
     time.sleep(3)
 
+    handle_cookie_popup(driver)
+
     # select FIDO2/WebAuthn from selector
     WebDriverWait(driver, 10).until(ec.visibility_of_element_located((By.ID, 'protocols')))
     select_element = Select(driver.find_element(By.ID, 'protocols'))
@@ -29,22 +32,25 @@ def hideez_fido2_cross_reference(title):
     search_input.send_keys(title)
     search_input.send_keys(Keys.RETURN)
 
-    # extract info from blocks
-    WebDriverWait(driver, 10).until(ec.visibility_of_element_located((By.CLASS_NAME, 'section-inner.filter-results')))
-    section_inner = driver.find_element(By.CLASS_NAME, 'section-inner.filter-results')
-    blocks = section_inner.find_elements(By.CLASS_NAME, 'ServiceBlock')
-    for block in blocks:
-        result = {
-            'description': '',
-            'link': ''
-        }
-        name = block.find_element(By.CLASS_NAME, 'ServiceBlock--heading').text.strip()
-        result['description'] = block.find_element(By.CLASS_NAME, 'ServiceBlock--content').text.strip()
-        try:
-            result['link'] = block.find_element(By.CLASS_NAME, 'ServiceBlock--link').get_attribute('href')
-        except NoSuchElementException:
-            pass
-        results[name] = result
+    try:
+        # extract info from blocks
+        WebDriverWait(driver, 10).until(ec.visibility_of_element_located((By.CLASS_NAME, 'section-inner.filter-results')))
+        section_inner = driver.find_element(By.CLASS_NAME, 'section-inner.filter-results')
+        blocks = section_inner.find_elements(By.CLASS_NAME, 'ServiceBlock')
+        for block in blocks:
+            result = {
+                'description': '',
+                'link': ''
+            }
+            name = block.find_element(By.CLASS_NAME, 'ServiceBlock--heading').text.strip()
+            result['description'] = block.find_element(By.CLASS_NAME, 'ServiceBlock--content').text.strip()
+            try:
+                result['link'] = block.find_element(By.CLASS_NAME, 'ServiceBlock--link').get_attribute('href')
+            except NoSuchElementException:
+                pass
+            results[name] = result
+    except TimeoutException:
+        pass
 
     if results:
         fido_support = True

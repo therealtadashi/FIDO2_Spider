@@ -56,9 +56,11 @@ def get_fido_info_for_domain(domain_name, all_domain, data):
         return None
     else:
         fido_info = domain_info.get('metadata_available')
-        sso_archive = {
-            'fido_configuration': fido_info.get('fido_configuration'),
-            'fido_2fa_configuration': fido_info.get('fido_2fa_configuration'),
-            'fido2_configuration': fido_info.get('fido2_configuration')
-        }
+        sso_archive = {}
+        if fido_info is not None:
+            sso_archive = {
+                'fido_configuration': fido_info.get('fido_configuration'),
+                'fido_2fa_configuration': fido_info.get('fido_2fa_configuration'),
+                'fido2_configuration': fido_info.get('fido2_configuration')
+            }
         return sso_archive

@@ -87,6 +87,7 @@ class LoginPageScraper:
 
         self.potential_login.clear()
         self.potential_support_files.clear()
+        self.to_visit.clear()
 
         return copy_login, copy_support
 

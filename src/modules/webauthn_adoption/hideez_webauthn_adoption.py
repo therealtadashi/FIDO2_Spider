@@ -6,7 +6,6 @@ from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from src.modules.set_up_driver import setup_driver
-from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 
 
 def hideez_fido2_cross_reference(title):
@@ -14,14 +13,11 @@ def hideez_fido2_cross_reference(title):
 
     catalog_url = 'https://hideez.com/en-de/pages/supported-services'
     results = {}
-    fido2_support = False
+    fido_support = False
 
     driver = setup_driver()
     driver.get(catalog_url)
-
     time.sleep(3)
-
-    handle_cookie_popup(driver)
 
     # select FIDO2/WebAuthn from selector
     WebDriverWait(driver, 10).until(ec.visibility_of_element_located((By.ID, 'protocols')))
@@ -51,11 +47,11 @@ def hideez_fido2_cross_reference(title):
         results[name] = result
 
     if results:
-        fido2_support = True
+        fido_support = True
 
     hideez = {
         'hideez_block': results,
-        'fido2_support': fido2_support
+        'fido_support': fido_support
     }
 
     driver.quit()

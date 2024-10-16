@@ -8,7 +8,7 @@ def add_unique_urls(existing_urls, new_urls):
     existing_set.update(new_urls)
     return list(existing_set)
 
-def update_fido2_support_json(domain, login_urls, support_urls, yubikey, sso_archive):
+def update_fido2_support_json(domain, login_urls, support_urls, yubikey, hideez, sso_archive):
     if not os.path.exists(file_path):
         data = {}
     else:
@@ -27,6 +27,10 @@ def update_fido2_support_json(domain, login_urls, support_urls, yubikey, sso_arc
                 'yubikey_url': [],
                 'fido_support': False,
             },
+            'hideez': {
+                'hideez_block': {},
+                'fido_support': False,
+            },
             'sso_archive': {
                 'fido_configuration': False,
                 'fido_2fa_configuration': False,
@@ -39,6 +43,9 @@ def update_fido2_support_json(domain, login_urls, support_urls, yubikey, sso_arc
 
     data[domain]['yubikey']['yubikey_url'] = add_unique_urls(data[domain]['yubikey']['yubikey_url'], yubikey.get('yubikey_url', []))
     data[domain]['yubikey']['fido_support'] = yubikey.get('fido_support')
+
+    data[domain]['hideez']['hideez_block'] = hideez.get('hideez_block', {})
+    data[domain]['hideez']['fido_support'] = hideez.get('fido_support')
 
     data[domain]['sso_archive']['fido_configuration'] = sso_archive.get('fido_configuration')
     data[domain]['sso_archive']['fido_2fa_configuration'] = sso_archive.get('fido_2fa_configuration')

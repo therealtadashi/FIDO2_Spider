@@ -1,2 +1,101 @@
 {
+    "google.com": {
+        "login_urls": [],
+        "support_urls": [],
+        "yubikey": {
+            "yubikey_url": [
+                "https://www.yubico.com/works-with-yubikey/catalog/google-cloud/",
+                "https://www.yubico.com/works-with-yubikey/catalog/googleworkspace/",
+                "https://www.yubico.com/works-with-yubikey/catalog/google-chrome/",
+                "https://www.yubico.com/works-with-yubikey/catalog/advanced-protection-program/"
+            ],
+            "fido_support": true
+        },
+        "hideez": {
+            "hideez_block": {
+                "Google": {
+                    "description": "Physical security keys can be used for 2-Step Verification to help you keep hackers out of your Google Accounts (Gmail, Google Apps, Google Maps, YouTube, Hangouts, etc.). You\u2019ll be asked for your security key or another second step any time you sign in from a new computer or device.",
+                    "link": "https://support.google.com/accounts/answer/6103523"
+                }
+            },
+            "fido_support": true
+        },
+        "sso_archive": {
+            "fido_configuration": false,
+            "fido_2fa_configuration": false,
+            "fido2_configuration": false
+        }
+    },
+    "microsoft.com": {
+        "login_urls": [
+            "https://www.microsoft.com/account",
+            "https://account.microsoft.com/account/Account",
+            "https://support.microsoft.com/en-us/account-billing/sign-in-to-your-microsoft-account-dashboard-2ffedaca-6e1b-bc18-f28c-58539e1cb6d3",
+            "https://account.microsoft.com/account"
+        ],
+        "support_urls": [
+            "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js",
+            "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js"
+        ],
+        "yubikey": {
+            "yubikey_url": [
+                "https://www.yubico.com/works-with-yubikey/catalog/microsoft-edge-browser/",
+                "https://www.yubico.com/works-with-yubikey/catalog/bytenova/",
+                "https://www.yubico.com/works-with-yubikey/catalog/microsoft-entra-id/",
+                "https://www.yubico.com/works-with-yubikey/catalog/microsoft-surface/",
+                "https://www.yubico.com/works-with-yubikey/catalog/microsoft-accounts/"
+            ],
+            "fido_support": true
+        },
+        "hideez": {
+            "hideez_block": {
+                "Microsoft": {
+                    "description": "Microsoft turned on the ability to securely sign in with your Microsoft account using a standards-based FIDO2 compatible device - no username or password required! FIDO2 enables users to leverage standards-based devices to easily authenticate to online services - in both mobile and desktop environments.",
+                    "link": "https://support.microsoft.com/en-us/windows/sign-in-to-your-microsoft-account-with-windows-hello-or-a-security-key-800a8c01-6b61-49f5-0660-c2159bea4d84"
+                },
+                "Microsoft Edge Browser": {
+                    "description": "Microsoft Edge is the default web browser, replacing Internet Explorer 11 and Internet Explorer Mobile. As its development and release is dependent on the model of Windows as a service, it is not included in Windows Enterprise Long-Term Servicing Channel (LTSC) builds.",
+                    "link": ""
+                },
+                "Microsoft Entra ID (Azure AD)": {
+                    "description": "FIDO2 security keys are one of the passwordless authentication options that integrate with Entra ID (Azure AD). Users can register and then select a Hideez Key at the sign-in interface as their main means of authentication.",
+                    "link": "https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-authentication-passwordless#fido2-security-keys"
+                }
+            },
+            "fido_support": true
+        },
+        "sso_archive": {
+            "fido_configuration": false,
+            "fido_2fa_configuration": false,
+            "fido2_configuration": false
+        }
+    },
+    "amazonaws.com": {
+        "login_urls": [
+            "https://aws.amazon.com/",
+            "https://aws.amazon.com/account",
+            "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&src=header_signup"
+        ],
+        "support_urls": [
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=s0_uR7lw9ap8At9FS2zFhtiFuB3S65WPuxAZ1R3vwPE&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_13d53613f962961d/static/js/panorama-nav-init.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=wQDQcCqxbTAZVSucgasE2JCfGQIj0hVXcePwuD5C_0E&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_b5b91484851f8b61/static/js/panorama-nav-init.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=M-UTu-ZM5LDWinG5iMa_vyvnZurZWz-g8JY9J-kg1PI&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_a77946f2059d3f30/static/js/panorama-nav-init.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=s0_uR7lw9ap8At9FS2zFhtiFuB3S65WPuxAZ1R3vwPE&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_13d53613f962961d/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=wQDQcCqxbTAZVSucgasE2JCfGQIj0hVXcePwuD5C_0E&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_b5b91484851f8b61/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+            "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=M-UTu-ZM5LDWinG5iMa_vyvnZurZWz-g8JY9J-kg1PI&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_a77946f2059d3f30/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js"
+        ],
+        "yubikey": {
+            "yubikey_url": [],
+            "fido_support": false
+        },
+        "hideez": {
+            "hideez_block": {},
+            "fido_support": false
+        },
+        "sso_archive": {
+            "fido_configuration": false,
+            "fido_2fa_configuration": false,
+            "fido2_configuration": false
+        }
+    }
 }

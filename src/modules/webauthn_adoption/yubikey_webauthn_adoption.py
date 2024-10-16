@@ -4,10 +4,10 @@ from src.modules.set_up_driver import setup_driver
 from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 
 
-def yubikey_catalog_fido2_cross_reference(domain):
-    print(f'[webauthn_adoption] searching for FIDO2 on yubikey catalog for the domain: {domain}')
+def yubikey_catalog_fido2_cross_reference(title):
+    print(f'[yubikey_webauthn_adoption] searching for FIDO2 on yubikey catalog for the domain: {title}')
 
-    catalog_url = f'https://www.yubico.com/works-with-yubikey/catalog/?protocol=5&sort=popular&search={domain}'
+    catalog_url = f'https://www.yubico.com/works-with-yubikey/catalog/?protocol=5&sort=popular&search={title}'
     yubikey_urls = []
     fido_support = False
 
@@ -30,5 +30,7 @@ def yubikey_catalog_fido2_cross_reference(domain):
         'yubikey_url': yubikey_urls,
         'fido_support': fido_support
     }
+
+    driver.quit()
 
     return yubikey

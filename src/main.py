@@ -11,7 +11,7 @@ all_domain_names = [entry['domain'] for entry in datas]
 
 domains = read_url()
 counter = 0
-loginScraper = LoginPageScraper()
+loginScraper = LoginPageScraper(datas, all_domain_names)
 
 for domain in domains:
     counter += 1

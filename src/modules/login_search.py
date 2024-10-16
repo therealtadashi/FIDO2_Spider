@@ -3,7 +3,6 @@ import ssl
 import urllib
 from collections import deque
 from copy import deepcopy
-from datetime import datetime, timedelta
 from urllib import robotparser
 from urllib.parse import urljoin
 import certifi
@@ -12,7 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 from src.modules.fido_support.fido2_support import get_scripts, scan_scripts
 from src.modules.user_interaction.simulate_user_interaction import find_login_page
-from src.utils.sso_archive_parser import get_login_page_by_domain, get_list, get_url_for_domain
+from src.utils.sso_archive_parser import get_login_page_by_domain, get_url_for_domain
 
 path_patterns = ['/account', '/accounts', '/login', '/signin', '/user', '/auth'] # common patterns for login paths
 robots = '/robots.txt' # robots.txt path
@@ -46,15 +45,14 @@ def scan_new_links_for_scripts(new_links):
 
 
 class LoginPageScraper:
-    def __init__(self):
+    def __init__(self, datas, all_domain_names):
         self.to_visit = []
         self.visited = []
         self.potential_login = []
         self.potential_support_files = []
         self.rp = robotparser.RobotFileParser()
-        yesterday = (datetime.now() - timedelta(days = 7)).strftime('%Y-%m-%d')
-        self.datas = get_list(yesterday, '1', '1000')
-        self.all_domain_names = [entry['domain'] for entry in self.datas]
+        self.datas = datas
+        self.all_domain_names = all_domain_names
         self.session = requests.Session()
 
 

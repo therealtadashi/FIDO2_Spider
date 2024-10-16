@@ -23,11 +23,11 @@ def update_fido2_support_json(domain, login_urls, support_urls, yubikey, sso_arc
         data[domain] = {
             'login_urls': [],
             'support_urls': [],
-            ['yubikey']: {
+            'yubikey': {
                 'yubikey_url': [],
                 'fido_support': False,
             },
-            ['sso_archive']: {
+            'sso_archive': {
                 'fido_configuration': False,
                 'fido_2fa_configuration': False,
                 'fido2_configuration': False,

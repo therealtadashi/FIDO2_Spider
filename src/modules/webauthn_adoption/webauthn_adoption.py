@@ -8,7 +8,7 @@ def yubikey_catalog_fido2_cross_reference(domain):
     print(f'[webauthn_adoption] searching for FIDO2 on yubikey catalog for the domain: {domain}')
 
     catalog_url = f'https://www.yubico.com/works-with-yubikey/catalog/?protocol=5&sort=popular&search={domain}'
-    supports_yubikey_fido2 = False
+    fido_mentioning = False
     yubikey_urls = []
 
     driver = setup_driver()
@@ -24,6 +24,6 @@ def yubikey_catalog_fido2_cross_reference(domain):
         yubikey_urls.append(link)
 
     if len(yubikey_urls) > 0:
-        supports_yubikey_fido2 = True
+        fido_mentioning = True
 
-    return yubikey_urls, supports_yubikey_fido2
+    return yubikey_urls, fido_mentioning

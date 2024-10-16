@@ -16,13 +16,24 @@ loginScraper = LoginPageScraper()
 for domain in domains:
     counter += 1
     title = domain.split('.')[0]
-    print(title)
+
     # TODO Find WebAuthn Adoption for "domain" on Adoption Lists
+
     sso_fido = get_fido_info_for_domain(domain, all_domain_names, datas) # sso-archive
-    yubikey_fido = yubikey_catalog_fido2_cross_reference(title) # yubikey
+    sso_archive = {
+        'fido_configuration': sso_fido[0],
+        'fido_2fa_configuration': sso_fido[1],
+        'fido2_configuration': sso_fido[2]
+    }
+
+    yubikey_urls, fido_mentioning = yubikey_catalog_fido2_cross_reference(title) # yubikey
+    yubikey = {
+        'yubikey_url': yubikey_urls,
+        'fido_support': fido_mentioning
+    }
 
     login_urls, support_urls = loginScraper.search_common_login_path_for_url(domain) # Find Login Pages
-    update_fido2_support_json(domain, login_urls, support_urls) # Update FIDO2 Support json file
+    update_fido2_support_json(domain, login_urls, support_urls, yubikey, sso_archive) # Update FIDO2 Support json file
 
     if counter == 1:
         break

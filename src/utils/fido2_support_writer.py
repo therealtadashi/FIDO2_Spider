@@ -3,12 +3,14 @@ import os
 
 file_path = '../assets/fido2_support.json'
 
+
 def add_unique_urls(existing_urls, new_urls):
     existing_set = set(existing_urls)
     existing_set.update(new_urls)
     return list(existing_set)
 
-def update_fido2_support_json(domain, login_urls, support_urls, yubikey, hideez, dongleauth, sso_archive):
+
+def update_fido2_support_json(domain, login_urls, support_urls, yubikey, hideez, dongleauth, sso_archive, well_known):
     if not os.path.exists(file_path):
         data = {}
     else:
@@ -37,6 +39,10 @@ def update_fido2_support_json(domain, login_urls, support_urls, yubikey, hideez,
                 'fido2_configuration': False,
             },
             'dongleauth': {
+            },
+            'well_known': {
+                'url': '',
+                'support': '',
             }
         }
 
@@ -54,6 +60,9 @@ def update_fido2_support_json(domain, login_urls, support_urls, yubikey, hideez,
     data[domain]['sso_archive']['fido_configuration'] = sso_archive.get('fido_configuration')
     data[domain]['sso_archive']['fido_2fa_configuration'] = sso_archive.get('fido_2fa_configuration')
     data[domain]['sso_archive']['fido2_configuration'] = sso_archive.get('fido2_configuration')
+
+    data[domain]['well_known']['url'] = well_known.get('url')
+    data[domain]['well_known']['support'] = well_known.get('support')
 
     try:
         with open(file_path, 'w') as file:

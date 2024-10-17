@@ -1,5 +1,6 @@
 import requests
 
+
 credentials = 'navigator.credentials'
 
 def get_scripts(soup):
@@ -26,10 +27,20 @@ def scan_scripts(url, js_files):
 
 
 def scan_well_known(url):
+    url = url + '/.well-known/'
+    well_known = {
+        'url': url,
+        'support': False
+    }
     try:
-        well_known = url + '/.well-known/fido2-configuration'
-        response = requests.get(well_known)
+        response = requests.get(url)
         if response.status_code == 200:
-            print(f'[fido2_support] .well-known found at {well_known}')
+            print(f'[fido2_support] .well-known found at {url}')
+            well_known = {
+                'url': url,
+                'support': True
+            }
+            return well_known
     except Exception as e:
         print(f'[fido2_support] Exception while visiting {url}: {e}')
+    return well_known

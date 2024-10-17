@@ -4,6 +4,7 @@ import requests
 candidates = 'login_page_candidates'
 candidate = 'login_page_candidate'
 
+
 def check_domain_in_archive(domain_name, all_domain):
     return domain_name in all_domain
 

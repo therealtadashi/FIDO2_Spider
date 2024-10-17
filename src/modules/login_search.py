@@ -13,6 +13,7 @@ from src.modules.fido_support.fido2_support import get_scripts, scan_scripts
 from src.modules.user_interaction.simulate_user_interaction import find_login_page
 from src.utils.sso_archive_parser import get_login_page_by_domain, get_url_for_domain
 
+
 path_patterns = ['/account', '/accounts', '/login', '/signin', '/user', '/auth'] # common patterns for login paths
 robots = '/robots.txt' # robots.txt path
 https = 'https://'

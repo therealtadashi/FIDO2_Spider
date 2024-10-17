@@ -11,7 +11,6 @@ def dongleauth_fido2_cross_reference(domain, title):
 
     catalog_url = 'https://www.dongleauth.com/'
     results = {}
-    fido_support = False
 
     driver = setup_driver()
     driver.get(catalog_url)
@@ -45,7 +44,6 @@ def dongleauth_fido2_cross_reference(domain, title):
 
     dongleauth = {
         'results': results,
-        'fido2_support': fido_support,
     }
 
     return dongleauth

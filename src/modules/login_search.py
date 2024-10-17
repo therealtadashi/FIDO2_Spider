@@ -83,14 +83,16 @@ class LoginPageScraper:
                     file_dict = scan_new_links_for_scripts(new_links)
                     self.update_potential_login_list(login_url, file_dict)
 
-        copy_login = list(set(deepcopy(self.potential_login)))
-        copy_support = list(set(deepcopy(self.potential_support_files)))
+        login_search = {
+            'login_urls': list(set(deepcopy(self.potential_login))),
+            'support_urls': list(set(deepcopy(self.potential_support_files)))
+        }
 
         self.potential_login.clear()
         self.potential_support_files.clear()
         self.to_visit.clear()
 
-        return copy_login, copy_support
+        return login_search
 
 
     def send_requests_extract_new_urls(self, url, domain):

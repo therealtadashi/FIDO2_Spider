@@ -27,7 +27,7 @@ def scan_scripts(url, js_files):
 
 
 def scan_well_known(url):
-    url = url + '/.well-known/'
+    url = f'https://{url}/.well-known/'
     well_known = {
         'url': url,
         'support': False

@@ -1,144 +1,91 @@
 {
-    "akamaiedge.net": {
-        "login_urls": [],
-        "support_urls": [],
-        "yubikey": {
-            "yubikey_url": [],
-            "fido_support": false
+    "google.com": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
         },
-        "hideez": {
-            "hideez_block": {},
-            "fido_support": false
-        },
-        "sso_archive": {
-            "fido_configuration": null,
-            "fido_2fa_configuration": null,
-            "fido2_configuration": null
-        },
-        "dongleauth": {
-            "results": {},
-            "fido2_support": false
-        }
-    },
-    "twitter.com": {
-        "login_urls": [],
-        "support_urls": [],
-        "yubikey": {
-            "yubikey_url": [
-                "https://www.yubico.com/works-with-yubikey/catalog/x-twitter/"
-            ],
-            "fido_support": true
-        },
-        "hideez": {
-            "hideez_block": {},
-            "fido_support": false
-        },
-        "sso_archive": {
-            "fido_configuration": false,
-            "fido_2fa_configuration": false,
-            "fido2_configuration": false
-        },
-        "dongleauth": {
-            "results": {
-                "Twitter": {
-                    "link": "https://twitter.com",
-                    "docs": "https://support.twitter.com/articles/20170388",
-                    "u2f": true
-                }
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": false,
+                "fido_2fa_configuration": false,
+                "fido2_configuration": false
             },
-            "fido2_support": false
-        }
-    },
-    "cloudflare.com": {
-        "login_urls": [],
-        "support_urls": [],
-        "yubikey": {
-            "yubikey_url": [
-                "https://www.yubico.com/works-with-yubikey/catalog/cloudflare/"
-            ],
-            "fido_support": true
-        },
-        "hideez": {
-            "hideez_block": {
-                "Cloudflare": {
-                    "description": "Cloudflare supports security keys as a two factor authentication (2FA) method for all users in order to access their apps from various devices and browsers.",
-                    "link": "https://blog.cloudflare.com/cloudflare-now-supports-security-keys-with-web-authentication-webauthn/"
-                }
+            "yubikey": {
+                "yubikey_url": [
+                    "https://www.yubico.com/works-with-yubikey/catalog/advanced-protection-program/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/google-cloud/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/googleworkspace/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/google-chrome/"
+                ],
+                "fido_support": true
             },
-            "fido_support": true
-        },
-        "sso_archive": {
-            "fido_configuration": false,
-            "fido_2fa_configuration": false,
-            "fido2_configuration": false
-        },
-        "dongleauth": {
-            "results": {
-                "Cloudflare": {
-                    "link": "https://cloudflare.com",
-                    "docs": "https://support.cloudflare.com/hc/en-us/articles/200167866",
-                    "u2f": true
-                }
+            "hideez": {
+                "hideez_block": {
+                    "Google": {
+                        "description": "Physical security keys can be used for 2-Step Verification to help you keep hackers out of your Google Accounts (Gmail, Google Apps, Google Maps, YouTube, Hangouts, etc.). You\u2019ll be asked for your security key or another second step any time you sign in from a new computer or device.",
+                        "link": "https://support.google.com/accounts/answer/6103523"
+                    }
+                },
+                "fido_support": true
             },
-            "fido2_support": false
-        }
-    },
-    "instagram.com": {
-        "login_urls": [],
-        "support_urls": [],
-        "yubikey": {
-            "yubikey_url": [],
-            "fido_support": false
-        },
-        "hideez": {
-            "hideez_block": {},
-            "fido_support": false
-        },
-        "sso_archive": {
-            "fido_configuration": false,
-            "fido_2fa_configuration": false,
-            "fido2_configuration": false
-        },
-        "dongleauth": {
-            "results": {
-                "Instagram": {
-                    "link": "https://www.instagram.com",
-                    "docs": "https://help.instagram.com/566810106808145",
-                    "u2f": false
+            "dongleauth": {
+                "results": {
+                    "Google Drive": {
+                        "link": "https://drive.google.com",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Google Cloud Platform": {
+                        "link": "https://cloud.google.com",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Hangouts": {
+                        "link": "https://hangouts.google.com/",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Google Domains": {
+                        "link": "https://domains.google.com",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Gmail": {
+                        "link": "https://mail.google.com",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Google Play": {
+                        "link": "https://play.google.com",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Google Fit": {
+                        "link": "https://fit.google.com",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Google Wallet": {
+                        "link": "https://www.google.se/wallet/",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": true
+                    },
+                    "Google Fi": {
+                        "link": "https://fi.google.com/",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": false
+                    },
+                    "Google Fiber": {
+                        "link": "https://fiber.google.com/",
+                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                        "u2f": false
+                    }
                 }
-            },
-            "fido2_support": false
-        }
-    },
-    "office.com": {
-        "login_urls": [
-            "https://www.office.com/"
-        ],
-        "support_urls": [
-            "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js"
-        ],
-        "yubikey": {
-            "yubikey_url": [],
-            "fido_support": false
+            }
         },
-        "hideez": {
-            "hideez_block": {},
-            "fido_support": false
-        },
-        "sso_archive": {
-            "fido_configuration": false,
-            "fido_2fa_configuration": false,
-            "fido2_configuration": false
-        },
-        "dongleauth": {
-            "results": {
-                "Office 365": {
-                    "link": "https://office.microsoft.com/en-us/business/",
-                    "docs": "https://support.office.com/en-US/article/Set-up-multi-factor-authentication-for-Office-365-8f0454b2-f51a-4d9c-bcde-2c48e41621c6",
-                    "u2f": true
-                }
-            },
-            "fido2_support": false
+        "well_known": {
+            "url": "https://google.com/.well-known/",
+            "support": false
         }
     }
 }

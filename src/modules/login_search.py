@@ -41,7 +41,8 @@ def scan_new_links_for_scripts(new_links):
         html = requests.get(new_link).text
         soup = BeautifulSoup(html, 'html.parser')
         files = get_scripts(soup)
-        file_dict = scan_scripts(new_link, files)
+        scan_results = scan_scripts(new_link, files)
+        file_dict.update(scan_results)
     return file_dict
 
 
@@ -69,7 +70,6 @@ class LoginPageScraper:
 
         # TODO implement a working proxy rotation
         # TODO potential async requests
-
         if len(login_urls) == 0:
             print(f'[login_search] login page not found for url: {domain}')
             self.iterate_url_search_new_url(domain)
@@ -85,7 +85,7 @@ class LoginPageScraper:
 
         login_search = {
             'login_urls': list(set(deepcopy(self.potential_login))),
-            'support_urls': list(set(deepcopy(self.potential_support_files)))
+            'support_urls': list(set(deepcopy(self.potential_support_files))),
         }
 
         self.potential_login.clear()

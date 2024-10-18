@@ -42,8 +42,6 @@ def dongleauth_fido2_cross_reference(domain, title):
 
     driver.quit()
 
-    dongleauth = {
-        'results': results,
-    }
+    dongleauth = results
 
     return dongleauth

@@ -13,6 +13,7 @@ login_keywords = ['log in', 'sign in', 'sign on', 'signin', 'login']
 def find_login_page(url):
     print(f'[simulate_user_interaction] simulate button-interaction for url: {url}')
     new_links = []
+    # TODO User-Agent Rotation
     driver = setup_driver()
 
     try:

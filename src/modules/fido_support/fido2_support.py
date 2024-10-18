@@ -1,7 +1,9 @@
+import time
 import requests
-
+from src.modules.set_up_driver import setup_driver
 
 credentials = 'navigator.credentials'
+
 
 def get_scripts(soup):
     scripts = soup.find_all('script')
@@ -44,3 +46,49 @@ def scan_well_known(url):
     except Exception as e:
         print(f'[fido2_support] Exception while visiting {url}: {e}')
     return well_known
+
+
+def execute_script_api_support(url):
+    driver = setup_driver()
+    driver.get(url)
+    time.sleep(3)
+    webauthn_api = {}
+    webauthn_supported = driver.execute_script(
+        "return (typeof window.PublicKeyCredential !== 'undefined');"
+    )
+    credentials_create_supported = driver.execute_script(
+        "return (typeof navigator.credentials !== 'undefined' && typeof navigator.credentials.create !== 'undefined');"
+    )
+    credentials_get_supported = driver.execute_script(
+        "return (typeof navigator.credentials !== 'undefined' && typeof navigator.credentials.get !== 'undefined');"
+    )
+
+    webauthn_api[url] = {
+        "public_key_credentials": webauthn_supported,
+        "navigator_create": credentials_create_supported,
+        "navigator_get": credentials_get_supported
+    }
+
+    return webauthn_api
+
+
+def check_fido2_specific_headers(url):
+    driver = setup_driver()
+    driver.execute_cdp_cmd("Network.enable", {})
+    driver.get(url)
+
+    def capture_headers(request):
+        headers = request['request']['headers']
+        print(f"Request URL: {request['request']['url']}")
+        print(f"Request Headers: {headers}")
+
+    driver.execute_cdp_cmd("Network.setRequestInterception", {
+        "patterns": [{"urlPattern": "*"}]
+    })
+
+    driver.execute_cdp_cmd("Network.requestIntercepted", {
+        "interceptionId": "1",
+        "params": capture_headers
+    })
+
+    driver.quit()

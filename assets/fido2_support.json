@@ -12,10 +12,10 @@
             },
             "yubikey": {
                 "yubikey_url": [
-                    "https://www.yubico.com/works-with-yubikey/catalog/advanced-protection-program/",
-                    "https://www.yubico.com/works-with-yubikey/catalog/google-cloud/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/google-chrome/",
                     "https://www.yubico.com/works-with-yubikey/catalog/googleworkspace/",
-                    "https://www.yubico.com/works-with-yubikey/catalog/google-chrome/"
+                    "https://www.yubico.com/works-with-yubikey/catalog/google-cloud/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/advanced-protection-program/"
                 ],
                 "fido_support": true
             },
@@ -29,57 +29,55 @@
                 "fido_support": true
             },
             "dongleauth": {
-                "results": {
-                    "Google Drive": {
-                        "link": "https://drive.google.com",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Google Cloud Platform": {
-                        "link": "https://cloud.google.com",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Hangouts": {
-                        "link": "https://hangouts.google.com/",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Google Domains": {
-                        "link": "https://domains.google.com",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Gmail": {
-                        "link": "https://mail.google.com",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Google Play": {
-                        "link": "https://play.google.com",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Google Fit": {
-                        "link": "https://fit.google.com",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Google Wallet": {
-                        "link": "https://www.google.se/wallet/",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": true
-                    },
-                    "Google Fi": {
-                        "link": "https://fi.google.com/",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": false
-                    },
-                    "Google Fiber": {
-                        "link": "https://fiber.google.com/",
-                        "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                        "u2f": false
-                    }
+                "Google Drive": {
+                    "link": "https://drive.google.com",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Google Cloud Platform": {
+                    "link": "https://cloud.google.com",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Hangouts": {
+                    "link": "https://hangouts.google.com/",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Google Domains": {
+                    "link": "https://domains.google.com",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Gmail": {
+                    "link": "https://mail.google.com",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Google Play": {
+                    "link": "https://play.google.com",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Google Fit": {
+                    "link": "https://fit.google.com",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Google Wallet": {
+                    "link": "https://www.google.se/wallet/",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                },
+                "Google Fi": {
+                    "link": "https://fi.google.com/",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": false
+                },
+                "Google Fiber": {
+                    "link": "https://fiber.google.com/",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": false
                 }
             }
         },

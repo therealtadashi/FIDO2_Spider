@@ -81,10 +81,10 @@ def update_cross_reference(domain, sso_archive, yubikey, hideez, dongleauth):
     cross_reference['yubikey']['yubikey_url'] = add_unique_urls(cross_reference['yubikey']['yubikey_url'], yubikey.get('yubikey_url', []))
     cross_reference['yubikey']['fido_support'] = yubikey.get('fido_support')
 
-    cross_reference['hideez']['hideez_block'] = hideez.get('hideez_block', {})
+    cross_reference['hideez']['hideez_block'].update(hideez.get('hideez_block', {}))
     cross_reference['hideez']['fido_support'] = hideez.get('fido_support')
 
-    cross_reference['dongleauth'] = dongleauth
+    cross_reference['dongleauth'].update(dongleauth)
 
     save_json(data)
 

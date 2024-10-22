@@ -1,9 +1,9 @@
 from datetime import datetime, timedelta
 from src.modules.fido_support.fido2_support import scan_well_known
 from src.modules.login_search import LoginPageScraper
-from src.modules.webauthn_adoption.dongleauth_webauthn_adoption import dongleauth_fido2_cross_reference
-from src.modules.webauthn_adoption.hideez_webauthn_adoption import hideez_fido2_cross_reference
-from src.modules.webauthn_adoption.yubikey_webauthn_adoption import yubikey_catalog_fido2_cross_reference
+from src.modules.cross_reference_adoption.dongleauth_webauthn_adoption import dongleauth_fido2_cross_reference
+from src.modules.cross_reference_adoption.hideez_webauthn_adoption import hideez_fido2_cross_reference
+from src.modules.cross_reference_adoption.yubikey_webauthn_adoption import yubikey_catalog_fido2_cross_reference
 from src.utils.csv_url_reader import read_url
 from src.utils.fido2_support_writer import update_login_search, update_well_known, update_cross_reference
 from src.utils.sso_archive_parser import get_fido_info_for_domain, get_list
@@ -13,7 +13,7 @@ yesterday = (datetime.now() - timedelta(days = 7)).strftime('%Y-%m-%d')
 datas = get_list(yesterday, '1', '1000')
 all_domain_names = [entry['domain'] for entry in datas]
 
-domains = read_url()[0:1]
+domains = read_url()[0:10]
 counter = 0
 loginScraper = LoginPageScraper(datas, all_domain_names)
 

@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
-from src.modules.set_up_driver import setup_driver
+from src.utils.set_up_driver import setup_driver
 from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 
 

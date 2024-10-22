@@ -12,10 +12,10 @@
             },
             "yubikey": {
                 "yubikey_url": [
-                    "https://www.yubico.com/works-with-yubikey/catalog/google-chrome/",
                     "https://www.yubico.com/works-with-yubikey/catalog/googleworkspace/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/advanced-protection-program/",
                     "https://www.yubico.com/works-with-yubikey/catalog/google-cloud/",
-                    "https://www.yubico.com/works-with-yubikey/catalog/advanced-protection-program/"
+                    "https://www.yubico.com/works-with-yubikey/catalog/google-chrome/"
                 ],
                 "fido_support": true
             },
@@ -83,6 +83,339 @@
         },
         "well_known": {
             "url": "https://google.com/.well-known/",
+            "support": false
+        }
+    },
+    "microsoft.com": {
+        "login_search": {
+            "login_urls": [
+                "https://account.microsoft.com/account",
+                "https://account.microsoft.com/account/Account",
+                "https://support.microsoft.com/en-us/account-billing/sign-in-to-your-microsoft-account-dashboard-2ffedaca-6e1b-bc18-f28c-58539e1cb6d3",
+                "https://www.microsoft.com/account"
+            ],
+            "support_urls": [
+                "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js",
+                "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js",
+                "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js",
+                "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js"
+            ]
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": false,
+                "fido_2fa_configuration": false,
+                "fido2_configuration": false
+            },
+            "yubikey": {
+                "yubikey_url": [
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-entra-id/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-edge-browser/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-surface/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/bytenova/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-accounts/"
+                ],
+                "fido_support": true
+            },
+            "hideez": {
+                "hideez_block": {
+                    "Microsoft": {
+                        "description": "Microsoft turned on the ability to securely sign in with your Microsoft account using a standards-based FIDO2 compatible device - no username or password required! FIDO2 enables users to leverage standards-based devices to easily authenticate to online services - in both mobile and desktop environments.",
+                        "link": "https://support.microsoft.com/en-us/windows/sign-in-to-your-microsoft-account-with-windows-hello-or-a-security-key-800a8c01-6b61-49f5-0660-c2159bea4d84"
+                    },
+                    "Microsoft Edge Browser": {
+                        "description": "Microsoft Edge is the default web browser, replacing Internet Explorer 11 and Internet Explorer Mobile. As its development and release is dependent on the model of Windows as a service, it is not included in Windows Enterprise Long-Term Servicing Channel (LTSC) builds.",
+                        "link": ""
+                    },
+                    "Microsoft Entra ID (Azure AD)": {
+                        "description": "FIDO2 security keys are one of the passwordless authentication options that integrate with Entra ID (Azure AD). Users can register and then select a Hideez Key at the sign-in interface as their main means of authentication.",
+                        "link": "https://docs.microsoft.com/en-us/azure/active-directory/authentication/concept-authentication-passwordless#fido2-security-keys"
+                    }
+                },
+                "fido_support": true
+            },
+            "dongleauth": {
+                "Microsoft Azure": {
+                    "link": "https://azure.microsoft.com/",
+                    "docs": "https://azure.microsoft.com/en-us/documentation/articles/multi-factor-authentication/",
+                    "u2f": true
+                },
+                "Office 365": {
+                    "link": "https://office.microsoft.com/en-us/business/",
+                    "docs": "https://support.office.com/en-US/article/Set-up-multi-factor-authentication-for-Office-365-8f0454b2-f51a-4d9c-bcde-2c48e41621c6",
+                    "u2f": true
+                },
+                "Microsoft To-Do": {
+                    "link": "https://todo.microsoft.com/",
+                    "docs": "https://support.microsoft.com/en-us/account-billing/how-to-use-two-step-verification-with-your-microsoft-account-c7910146-672f-01e9-50a0-93b4585e7eb4",
+                    "u2f": true
+                }
+            }
+        },
+        "well_known": {
+            "url": "https://microsoft.com/.well-known/",
+            "support": true
+        }
+    },
+    "amazonaws.com": {
+        "login_search": {
+            "login_urls": [
+                "https://aws.amazon.com/",
+                "https://aws.amazon.com/account",
+                "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&src=header_signup"
+            ],
+            "support_urls": [
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=tN6TQ6PqrKaitPi9AU6BNHjh4jCGRDpDftXD7vQROps&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_f66411c583ba3d2f/static/js/panorama-nav-init.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=kxdE60_91cCYoZnc-qCexymxfqTioHBzRwxxp1d4yJc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_fc60cd6585054cb7/static/js/panorama-nav-init.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=f0pfYoRKj9LTAVKhpTht1OlwX-tm_SQg9puewIzkv7A&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_489e918d1727d2e5/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=bF4dcbmiWtb4VGX2WiyjJD6-7d0zxtD4KXZhjuKoxyc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_37f233032962bf77/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=tN6TQ6PqrKaitPi9AU6BNHjh4jCGRDpDftXD7vQROps&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_f66411c583ba3d2f/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=RBuEqVOpbjpXekEEOAnHdNT6ApaDGDglJv0ZWXCmfx8&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_33174603e1826eed/static/js/panorama-nav-init.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=kxdE60_91cCYoZnc-qCexymxfqTioHBzRwxxp1d4yJc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_fc60cd6585054cb7/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=RBuEqVOpbjpXekEEOAnHdNT6ApaDGDglJv0ZWXCmfx8&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_33174603e1826eed/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=dZj0DwBarzde6Fx04QKA0My7nZi_Dp9JUgNJYIQKrzE&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_47e5a168b1ddebc1/static/js/panorama-nav-init.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=dZj0DwBarzde6Fx04QKA0My7nZi_Dp9JUgNJYIQKrzE&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_47e5a168b1ddebc1/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=f0pfYoRKj9LTAVKhpTht1OlwX-tm_SQg9puewIzkv7A&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_489e918d1727d2e5/static/js/panorama-nav-init.js",
+                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=bF4dcbmiWtb4VGX2WiyjJD6-7d0zxtD4KXZhjuKoxyc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_37f233032962bf77/static/js/panorama-nav-init.js"
+            ]
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": false,
+                "fido_2fa_configuration": false,
+                "fido2_configuration": false
+            },
+            "yubikey": {
+                "yubikey_url": [],
+                "fido_support": false
+            },
+            "hideez": {
+                "hideez_block": {},
+                "fido_support": false
+            },
+            "dongleauth": {}
+        },
+        "well_known": {
+            "url": "https://amazonaws.com/.well-known/",
+            "support": false
+        }
+    },
+    "a-msedge.net": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": null,
+                "fido_2fa_configuration": null,
+                "fido2_configuration": null
+            },
+            "yubikey": {
+                "yubikey_url": [],
+                "fido_support": false
+            },
+            "hideez": {
+                "hideez_block": {},
+                "fido_support": false
+            },
+            "dongleauth": {}
+        },
+        "well_known": {
+            "url": "https://a-msedge.net/.well-known/",
+            "support": false
+        }
+    },
+    "facebook.com": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": false,
+                "fido_2fa_configuration": false,
+                "fido2_configuration": false
+            },
+            "yubikey": {
+                "yubikey_url": [
+                    "https://www.yubico.com/works-with-yubikey/catalog/facebook/"
+                ],
+                "fido_support": true
+            },
+            "hideez": {
+                "hideez_block": {
+                    "Facebook": {
+                        "description": "Security keys are a method of two-factor authentication (2FA) that adds a layer of security to logging in to Facebook. Your security key can be used with other websites while also being used for your Facebook account.",
+                        "link": "https://www.facebook.com/help/401566786855239"
+                    }
+                },
+                "fido_support": true
+            },
+            "dongleauth": {
+                "Facebook": {
+                    "link": "https://facebook.com",
+                    "docs": "https://www.facebook.com/help/401566786855239",
+                    "u2f": true
+                }
+            }
+        },
+        "well_known": {
+            "url": "https://facebook.com/.well-known/",
+            "support": false
+        }
+    },
+    "googleapis.com": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": null,
+                "fido_2fa_configuration": null,
+                "fido2_configuration": null
+            },
+            "yubikey": {
+                "yubikey_url": [],
+                "fido_support": false
+            },
+            "hideez": {
+                "hideez_block": {},
+                "fido_support": false
+            },
+            "dongleauth": {}
+        },
+        "well_known": {
+            "url": "https://googleapis.com/.well-known/",
+            "support": false
+        }
+    },
+    "akamai.net": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": null,
+                "fido_2fa_configuration": null,
+                "fido2_configuration": null
+            },
+            "yubikey": {
+                "yubikey_url": [],
+                "fido_support": false
+            },
+            "hideez": {
+                "hideez_block": {},
+                "fido_support": false
+            },
+            "dongleauth": {}
+        },
+        "well_known": {
+            "url": "https://akamai.net/.well-known/",
+            "support": false
+        }
+    },
+    "apple.com": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": false,
+                "fido_2fa_configuration": false,
+                "fido2_configuration": false
+            },
+            "yubikey": {
+                "yubikey_url": [
+                    "https://www.yubico.com/works-with-yubikey/catalog/apple-icloud/"
+                ],
+                "fido_support": true
+            },
+            "hideez": {
+                "hideez_block": {
+                    "Apple iCloud": {
+                        "description": "iCloud is the service from Apple that securely stores your photos, files, notes, passwords, and other data in the cloud and keeps it up to date across all your devices, automatically. iCloud also makes it easy to share photos, files, notes, and more with friends and family.",
+                        "link": ""
+                    }
+                },
+                "fido_support": true
+            },
+            "dongleauth": {
+                "Apple iCloud": {
+                    "link": "https://www.icloud.com",
+                    "docs": "https://support.apple.com/en-us/HT204915",
+                    "u2f": true
+                },
+                "Apple": {
+                    "link": "https://appleid.apple.com",
+                    "docs": "https://support.apple.com/en-us/HT204915",
+                    "u2f": true
+                }
+            }
+        },
+        "well_known": {
+            "url": "https://apple.com/.well-known/",
+            "support": false
+        }
+    },
+    "youtube.com": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": false,
+                "fido_2fa_configuration": false,
+                "fido2_configuration": false
+            },
+            "yubikey": {
+                "yubikey_url": [],
+                "fido_support": false
+            },
+            "hideez": {
+                "hideez_block": {},
+                "fido_support": false
+            },
+            "dongleauth": {
+                "YouTube": {
+                    "link": "https://www.youtube.com/",
+                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
+                    "u2f": true
+                }
+            }
+        },
+        "well_known": {
+            "url": "https://youtube.com/.well-known/",
+            "support": false
+        }
+    },
+    "root-servers.net": {
+        "login_search": {
+            "login_urls": [],
+            "support_urls": []
+        },
+        "cross_reference": {
+            "sso_archive": {
+                "fido_configuration": null,
+                "fido_2fa_configuration": null,
+                "fido2_configuration": null
+            },
+            "yubikey": {
+                "yubikey_url": [],
+                "fido_support": false
+            },
+            "hideez": {
+                "hideez_block": {},
+                "fido_support": false
+            },
+            "dongleauth": {}
+        },
+        "well_known": {
+            "url": "https://root-servers.net/.well-known/",
             "support": false
         }
     }

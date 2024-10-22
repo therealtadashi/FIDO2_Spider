@@ -62,9 +62,14 @@ class LoginPageScraper:
     def search_common_login_path_for_url(self, domain):
         print(f'[login_search] search for login path patterns for url: {domain}')
 
+        login_search = {
+            'login_urls': [],
+            'support_urls': [],
+        }
+
         base_url = self.check_connection_with_domain(domain)
         if base_url is None:
-            return [], []
+            return login_search
         self.set_up_login_search(base_url)
         login_urls = get_login_page_by_domain(domain, self.all_domain_names, self.datas)
 
@@ -83,10 +88,8 @@ class LoginPageScraper:
                     file_dict = scan_new_links_for_scripts(new_links)
                     self.update_potential_login_list(login_url, file_dict)
 
-        login_search = {
-            'login_urls': list(set(deepcopy(self.potential_login))),
-            'support_urls': list(set(deepcopy(self.potential_support_files))),
-        }
+        login_search['login_urls'] = list(set(deepcopy(self.potential_login)))
+        login_search['support_urls'] = list(set(deepcopy(self.potential_support_files)))
 
         self.potential_login.clear()
         self.potential_support_files.clear()

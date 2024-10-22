@@ -4,7 +4,7 @@ from selenium.common import NoSuchElementException, StaleElementReferenceExcepti
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from src.modules.set_up_driver import setup_driver
+from src.utils.set_up_driver import setup_driver
 from src.modules.user_interaction.cookie_interaction import handle_cookie_popup
 from src.modules.user_interaction.translation_keyword import translation_keyword
 

@@ -3,7 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium.webdriver import Keys
-from src.modules.set_up_driver import setup_driver
+from src.utils.set_up_driver import setup_driver
 
 
 def dongleauth_fido2_cross_reference(domain, title):

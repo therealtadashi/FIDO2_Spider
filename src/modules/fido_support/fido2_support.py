@@ -1,6 +1,6 @@
 import time
 import requests
-from src.modules.set_up_driver import setup_driver
+from src.utils.set_up_driver import setup_driver
 
 credentials = 'navigator.credentials'
 

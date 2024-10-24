@@ -1,8 +1,22 @@
 {
     "google.com": {
         "login_search": {
-            "login_urls": [],
-            "support_urls": []
+            "login_urls": [
+                "https://www.google.com/?/login/login",
+                "https://www.google.com/account",
+                "https://www.google.com/",
+                "https://accounts.google.com/ServiceLogin?continue=https://www.google.com/&ec=GAZAmgQ&hl=de&passive=true",
+                "https://accounts.google.com/v3/signin/identifier?continue=https://www.google.com/&dsh=S1325484217:1688138551787702&ec=GAZAmgQ&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=de&ifkv=AeDOFXgI9AzE3P3LkpRgJ7GQotrFMTkxDL2BpA3VWNR7ou4BK8e_dFgVD33EeYLMwx8fsY5d_DlFIA&passive=true",
+                "https://accounts.google.com/Login"
+            ],
+            "js_file_paths": [
+                {
+                    "path": "https://www.gstatic.com/_/mss/boq-identity/_/js/k=boq-identity.AccountsSignInUi.en.4mIZXjiNLbM.es5.O/am=5AzGkWEagYD4hKcBvQFFAiEHAAAAAAAAAABsAACAHiY/d=1/excm=_b,_tp,identifierview/ed=1/dg=0/wt=2/ujg=1/rs=AOaEmlEKgguGQ9kvyMRdYEwIpBaXz9DVZw/m=_b,_tp",
+                    "navigator.credentials": false,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                }
+            ]
         },
         "cross_reference": {
             "sso_archive": {
@@ -90,15 +104,56 @@
         "login_search": {
             "login_urls": [
                 "https://account.microsoft.com/account",
-                "https://account.microsoft.com/account/Account",
+                "https://www.microsoft.com/de-de/",
                 "https://support.microsoft.com/en-us/account-billing/sign-in-to-your-microsoft-account-dashboard-2ffedaca-6e1b-bc18-f28c-58539e1cb6d3",
-                "https://www.microsoft.com/account"
+                "https://www.microsoft.com/rpsauth/v1/account/SignIn?ru=https://www.microsoft.com/de-de/",
+                "https://www.microsoft.com/account",
+                "https://account.microsoft.com/account/Account",
+                "https://www.microsoft.com/en-us/learning/dashboard.aspx"
             ],
-            "support_urls": [
-                "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js",
-                "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_64Z6dmvJd_mCK0LlAXyiHg2.js",
-                "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js",
-                "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js"
+            "js_file_paths": [
+                {
+                    "path": "https://aadcdn.msauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js",
+                    "navigator.credentials": true,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                },
+                {
+                    "path": "https://aadcdn.msauth.net/ests/2.1/content/cdnbundles/ux.converged.login.strings-en-gb.min_cbswjxuaj0rm3vcoq-_xgq2.js",
+                    "navigator.credentials": false,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                },
+                {
+                    "path": "https://logincdn.msauth.net/shared/5/js/login_de_NfPpWgRWs2Z1pm_WO-ZxAA2.js",
+                    "navigator.credentials": false,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                },
+                {
+                    "path": "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_DQTmGfOEMmPUR-Vehc8U6Q2.js",
+                    "navigator.credentials": true,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                },
+                {
+                    "path": "https://aadcdn.msftauth.net/ests/2.1/content/cdnbundles/ux.converged.login.strings-en.min_1yb3e7oii5t28dgo4xrtow2.js",
+                    "navigator.credentials": false,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                },
+                {
+                    "path": "https://aadcdn.msftauth.net/shared/1.0/content/js/ConvergedLogin_PCore_QLF_8apNRJD3OCol8jwtxw2.js",
+                    "navigator.credentials": true,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                },
+                {
+                    "path": "https://aadcdn.msftauth.net/ests/2.1/content/cdnbundles/ux.converged.login.strings-en-gb.min_cbswjxuaj0rm3vcoq-_xgq2.js",
+                    "navigator.credentials": false,
+                    "isConditionalMediationAvailable": false,
+                    "u2f": false
+                }
             ]
         },
         "cross_reference": {
@@ -109,10 +164,10 @@
             },
             "yubikey": {
                 "yubikey_url": [
-                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-entra-id/",
-                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-edge-browser/",
-                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-surface/",
                     "https://www.yubico.com/works-with-yubikey/catalog/bytenova/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-surface/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-edge-browser/",
+                    "https://www.yubico.com/works-with-yubikey/catalog/microsoft-entra-id/",
                     "https://www.yubico.com/works-with-yubikey/catalog/microsoft-accounts/"
                 ],
                 "fido_support": true
@@ -155,268 +210,6 @@
         "well_known": {
             "url": "https://microsoft.com/.well-known/",
             "support": true
-        }
-    },
-    "amazonaws.com": {
-        "login_search": {
-            "login_urls": [
-                "https://aws.amazon.com/",
-                "https://aws.amazon.com/account",
-                "https://portal.aws.amazon.com/gp/aws/developer/registration/index.html?nc2=h_ct&src=header_signup"
-            ],
-            "support_urls": [
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=tN6TQ6PqrKaitPi9AU6BNHjh4jCGRDpDftXD7vQROps&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_f66411c583ba3d2f/static/js/panorama-nav-init.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=kxdE60_91cCYoZnc-qCexymxfqTioHBzRwxxp1d4yJc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_fc60cd6585054cb7/static/js/panorama-nav-init.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=f0pfYoRKj9LTAVKhpTht1OlwX-tm_SQg9puewIzkv7A&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_489e918d1727d2e5/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=bF4dcbmiWtb4VGX2WiyjJD6-7d0zxtD4KXZhjuKoxyc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_37f233032962bf77/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=tN6TQ6PqrKaitPi9AU6BNHjh4jCGRDpDftXD7vQROps&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_f66411c583ba3d2f/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=RBuEqVOpbjpXekEEOAnHdNT6ApaDGDglJv0ZWXCmfx8&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_33174603e1826eed/static/js/panorama-nav-init.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=kxdE60_91cCYoZnc-qCexymxfqTioHBzRwxxp1d4yJc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_fc60cd6585054cb7/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=RBuEqVOpbjpXekEEOAnHdNT6ApaDGDglJv0ZWXCmfx8&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_33174603e1826eed/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=dZj0DwBarzde6Fx04QKA0My7nZi_Dp9JUgNJYIQKrzE&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_47e5a168b1ddebc1/static/js/panorama-nav-init.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=dZj0DwBarzde6Fx04QKA0My7nZi_Dp9JUgNJYIQKrzE&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_eu-north-1_47e5a168b1ddebc1/static/js/AWSMarketingTargetServiceAnalyticsClientSignin.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=f0pfYoRKj9LTAVKhpTht1OlwX-tm_SQg9puewIzkv7A&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_489e918d1727d2e5/static/js/panorama-nav-init.js",
-                "https://eu-north-1.signin.aws.amazon.com/oauth?client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&code_challenge=bF4dcbmiWtb4VGX2WiyjJD6-7d0zxtD4KXZhjuKoxyc&code_challenge_method=SHA-256&response_type=code&redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26nc2%3Dh_ct%26src%3Dheader-signin%26state%3DhashArgsFromTB_eu-north-1_37f233032962bf77/static/js/panorama-nav-init.js"
-            ]
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": false,
-                "fido_2fa_configuration": false,
-                "fido2_configuration": false
-            },
-            "yubikey": {
-                "yubikey_url": [],
-                "fido_support": false
-            },
-            "hideez": {
-                "hideez_block": {},
-                "fido_support": false
-            },
-            "dongleauth": {}
-        },
-        "well_known": {
-            "url": "https://amazonaws.com/.well-known/",
-            "support": false
-        }
-    },
-    "a-msedge.net": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": null,
-                "fido_2fa_configuration": null,
-                "fido2_configuration": null
-            },
-            "yubikey": {
-                "yubikey_url": [],
-                "fido_support": false
-            },
-            "hideez": {
-                "hideez_block": {},
-                "fido_support": false
-            },
-            "dongleauth": {}
-        },
-        "well_known": {
-            "url": "https://a-msedge.net/.well-known/",
-            "support": false
-        }
-    },
-    "facebook.com": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": false,
-                "fido_2fa_configuration": false,
-                "fido2_configuration": false
-            },
-            "yubikey": {
-                "yubikey_url": [
-                    "https://www.yubico.com/works-with-yubikey/catalog/facebook/"
-                ],
-                "fido_support": true
-            },
-            "hideez": {
-                "hideez_block": {
-                    "Facebook": {
-                        "description": "Security keys are a method of two-factor authentication (2FA) that adds a layer of security to logging in to Facebook. Your security key can be used with other websites while also being used for your Facebook account.",
-                        "link": "https://www.facebook.com/help/401566786855239"
-                    }
-                },
-                "fido_support": true
-            },
-            "dongleauth": {
-                "Facebook": {
-                    "link": "https://facebook.com",
-                    "docs": "https://www.facebook.com/help/401566786855239",
-                    "u2f": true
-                }
-            }
-        },
-        "well_known": {
-            "url": "https://facebook.com/.well-known/",
-            "support": false
-        }
-    },
-    "googleapis.com": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": null,
-                "fido_2fa_configuration": null,
-                "fido2_configuration": null
-            },
-            "yubikey": {
-                "yubikey_url": [],
-                "fido_support": false
-            },
-            "hideez": {
-                "hideez_block": {},
-                "fido_support": false
-            },
-            "dongleauth": {}
-        },
-        "well_known": {
-            "url": "https://googleapis.com/.well-known/",
-            "support": false
-        }
-    },
-    "akamai.net": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": null,
-                "fido_2fa_configuration": null,
-                "fido2_configuration": null
-            },
-            "yubikey": {
-                "yubikey_url": [],
-                "fido_support": false
-            },
-            "hideez": {
-                "hideez_block": {},
-                "fido_support": false
-            },
-            "dongleauth": {}
-        },
-        "well_known": {
-            "url": "https://akamai.net/.well-known/",
-            "support": false
-        }
-    },
-    "apple.com": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": false,
-                "fido_2fa_configuration": false,
-                "fido2_configuration": false
-            },
-            "yubikey": {
-                "yubikey_url": [
-                    "https://www.yubico.com/works-with-yubikey/catalog/apple-icloud/"
-                ],
-                "fido_support": true
-            },
-            "hideez": {
-                "hideez_block": {
-                    "Apple iCloud": {
-                        "description": "iCloud is the service from Apple that securely stores your photos, files, notes, passwords, and other data in the cloud and keeps it up to date across all your devices, automatically. iCloud also makes it easy to share photos, files, notes, and more with friends and family.",
-                        "link": ""
-                    }
-                },
-                "fido_support": true
-            },
-            "dongleauth": {
-                "Apple iCloud": {
-                    "link": "https://www.icloud.com",
-                    "docs": "https://support.apple.com/en-us/HT204915",
-                    "u2f": true
-                },
-                "Apple": {
-                    "link": "https://appleid.apple.com",
-                    "docs": "https://support.apple.com/en-us/HT204915",
-                    "u2f": true
-                }
-            }
-        },
-        "well_known": {
-            "url": "https://apple.com/.well-known/",
-            "support": false
-        }
-    },
-    "youtube.com": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": false,
-                "fido_2fa_configuration": false,
-                "fido2_configuration": false
-            },
-            "yubikey": {
-                "yubikey_url": [],
-                "fido_support": false
-            },
-            "hideez": {
-                "hideez_block": {},
-                "fido_support": false
-            },
-            "dongleauth": {
-                "YouTube": {
-                    "link": "https://www.youtube.com/",
-                    "docs": "https://www.google.com/intl/en-US/landing/2step/features.html",
-                    "u2f": true
-                }
-            }
-        },
-        "well_known": {
-            "url": "https://youtube.com/.well-known/",
-            "support": false
-        }
-    },
-    "root-servers.net": {
-        "login_search": {
-            "login_urls": [],
-            "support_urls": []
-        },
-        "cross_reference": {
-            "sso_archive": {
-                "fido_configuration": null,
-                "fido_2fa_configuration": null,
-                "fido2_configuration": null
-            },
-            "yubikey": {
-                "yubikey_url": [],
-                "fido_support": false
-            },
-            "hideez": {
-                "hideez_block": {},
-                "fido_support": false
-            },
-            "dongleauth": {}
-        },
-        "well_known": {
-            "url": "https://root-servers.net/.well-known/",
-            "support": false
         }
     }
 }

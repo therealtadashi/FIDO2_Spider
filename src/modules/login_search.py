@@ -2,7 +2,6 @@ import copy
 import ssl
 import urllib
 from collections import deque
-from copy import deepcopy
 from urllib import robotparser
 from urllib.parse import urljoin
 import certifi
@@ -36,14 +35,14 @@ def verify_root_domain(url, domain):
 
 
 def scan_new_links_for_scripts(new_links):
-    file_dict = {}
+    file_dicts = []
     for new_link in new_links:
         html = requests.get(new_link).text
         soup = BeautifulSoup(html, 'html.parser')
         files = get_scripts(soup)
         scan_results = scan_scripts(new_link, files)
-        file_dict.update(scan_results)
-    return file_dict
+        file_dicts.extend(scan_results)
+    return file_dicts
 
 
 class LoginPageScraper:
@@ -51,7 +50,7 @@ class LoginPageScraper:
         self.to_visit = []
         self.visited = []
         self.potential_login = []
-        self.potential_support_files = []
+        self.found_js_files = []
         self.rp = robotparser.RobotFileParser()
         self.datas = datas
         self.all_domain_names = all_domain_names
@@ -64,7 +63,7 @@ class LoginPageScraper:
 
         login_search = {
             'login_urls': [],
-            'support_urls': [],
+            'js_file_paths': [],
         }
 
         base_url = self.check_connection_with_domain(domain)
@@ -85,14 +84,14 @@ class LoginPageScraper:
                 if self.can_fetch_url(login_url):
                     new_links = find_login_page(login_url)
                     # TODO move scanning to a specific implementation
-                    file_dict = scan_new_links_for_scripts(new_links)
-                    self.update_potential_login_list(login_url, file_dict)
+                    file_dicts = scan_new_links_for_scripts(new_links)
+                    self.update_potential_login_list(login_url, file_dicts)
 
-        login_search['login_urls'] = list(set(deepcopy(self.potential_login)))
-        login_search['support_urls'] = list(set(deepcopy(self.potential_support_files)))
+        login_search['login_urls'] = list(set(self.potential_login.copy()))
+        login_search['js_file_paths'] = self.found_js_files.copy()
 
         self.potential_login.clear()
-        self.potential_support_files.clear()
+        self.found_js_files.clear()
         self.to_visit.clear()
 
         return login_search
@@ -183,12 +182,12 @@ class LoginPageScraper:
         self.set_up_robotsparser(base_url)
         self.create_common_path_urls(base_url) # appends new_urls to to_visit
 
-    def update_potential_login_list(self, login_url, file_dict):
-        for file, support in file_dict.items():
-            if support and file:
-                self.potential_support_files.append(file)
-                self.potential_login.append(login_url)
-
+    def update_potential_login_list(self, login_url, file_dicts):
+        self.potential_login.append(login_url)
+        for file_dict in file_dicts:
+            js_file = file_dict['path']
+            if js_file not in {f['path'] for f in self.found_js_files}:
+                self.found_js_files.append(file_dict)
 
     def check_connection_with_domain(self, domain):
         print(f'[login_search] checking connection for domain {domain}')

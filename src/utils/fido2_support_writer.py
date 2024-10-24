@@ -33,7 +33,7 @@ def setup_json_structure(domain, data):
         data[domain] = {
             'login_search': {
                 'login_urls': [],
-                'support_urls': [],
+                'js_file_paths': [],
             },
             'cross_reference': {
                 'sso_archive': {
@@ -64,7 +64,14 @@ def update_login_search(domain, login_search):
     login = data[domain]['login_search']
 
     login['login_urls'] = add_unique_urls(login['login_urls'], login_search['login_urls'])
-    login['support_urls'] = add_unique_urls(login['support_urls'], login_search['support_urls'])
+
+    new_js_files = login_search['js_file_paths']
+    existing_js_files = login['js_file_paths']
+    existing_paths = {file['path'] for file in existing_js_files}
+
+    for new_file in new_js_files:
+        if new_file['path'] not in existing_paths:
+            existing_js_files.append(new_file)
 
     save_json(data)
 

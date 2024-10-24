@@ -13,12 +13,10 @@ yesterday = (datetime.now() - timedelta(days = 7)).strftime('%Y-%m-%d')
 datas = get_list(yesterday, '1', '1000')
 all_domain_names = [entry['domain'] for entry in datas]
 
-domains = read_url()[0:10]
-counter = 0
+domains = read_url()[0:5]
 loginScraper = LoginPageScraper(datas, all_domain_names)
 
 for domain in domains:
-    counter += 1
     title = domain.split('.')[0]
 
     # TODO Cross Reference
@@ -34,7 +32,7 @@ for domain in domains:
 
     # TODO Search for Login Pages
     login_search = loginScraper.search_common_login_path_for_url(domain) # Find Login Pages
-    update_login_search(domain, login_search) # Update FIDO2 Support json file
+    update_login_search(domain, login_search)
 
     print('\n')
 
